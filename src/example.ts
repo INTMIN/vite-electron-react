@@ -35,3 +35,16 @@ function noReturn():never {
   throw new Error('error');
 }
 
+
+// 交叉类型  一般用于给对应对象添加新属性
+type A = {foo:number}
+type B = A&{foot:string}
+
+
+// 可能是数字或者字符串数组 下面两个等效
+let arr:(number|string)[]
+let newArr:Array<string|number>
+
+// readonly 不能给数组的泛型一起使用 下面的写法会报错
+// let readArr:readonly Array<string|number>=[1,2]
+let readArr:readonly number[] = [1,2]
